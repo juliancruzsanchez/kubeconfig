@@ -35,10 +35,6 @@ function showHelp {
   t | tokenOnly - Only generates token doesn't make user
   """
 }
-# Makes Users
-function makeUsers {
-  echo Had Problems Reimplmenting before public release
-}
 
 function getToken {
   kubectl -n kubernetes-dashboard get secret $(kubectl -n kubernetes-dashboard get sa/$username -o jsonpath="{.secrets[0].name}") -o go-template="{{.data.token | base64decode}}" 1> token
@@ -51,7 +47,7 @@ function getToken {
 if [$tokenOnly = "t"]; then
   getToken
 else
-  makeUsers
+  #makeUsers
   getToken
 fi
 
