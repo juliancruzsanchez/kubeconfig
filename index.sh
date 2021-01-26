@@ -37,7 +37,7 @@ function showHelp {
 }
 # Makes Users
 function makeUsers {
-  
+  echo Had Problems Reimplmenting before public release
 }
 
 function getToken {
