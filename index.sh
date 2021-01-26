@@ -39,12 +39,12 @@ function showHelp {
 function getToken {
   kubectl -n kubernetes-dashboard get secret $(kubectl -n kubernetes-dashboard get sa/$username -o jsonpath="{.secrets[0].name}") -o go-template="{{.data.token | base64decode}}" 1> token
   cat token
-  if [ $ixio = "t" ]; then
+  if [ "$ixio" = "t" ]; then
     cat token | curl -F 'f:1=<-' ix.io
   fi
 }
 
-if [$tokenOnly = "t"]; then
+if ["$tokenOnly" = "t"]; then
   getToken
 else
   #makeUsers
