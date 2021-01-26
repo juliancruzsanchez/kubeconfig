@@ -37,35 +37,7 @@ function showHelp {
 }
 # Makes Users
 function makeUsers {
-  """
-  echo "Making User $username..."
-  cat <<EOF | kubectl apply -f -
-  apiVersion: v1
-  kind: ServiceAccount
-  metadata:
-    name: $username
-    namespace: kubernetes-dashboard
-  EOF
   
-  
-  echo "Done."
-  echo "Assigning ClusterRole to $username..."
-  
-  cat <<EOF | kubectl apply -f -
-  apiVersion: rbac.authorization.k8s.io/v1
-  kind: ClusterRoleBinding
-  metadata:
-    name: $username
-  roleRef:
-    apiGroup: rbac.authorization.k8s.io
-    kind: ClusterRole
-    name: cluster-admin
-  subjects:
-  - kind: ServiceAccount
-    name: $username
-    namespace: kubernetes-dashboard
-  EOF
-  """
 }
 
 function getToken {
