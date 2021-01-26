@@ -37,6 +37,7 @@ function showHelp {
 }
 # Makes Users
 function makeUsers {
+  """
   echo "Making User $username..."
   cat <<EOF | kubectl apply -f -
   apiVersion: v1
@@ -63,7 +64,8 @@ function makeUsers {
   - kind: ServiceAccount
     name: $username
     namespace: kubernetes-dashboard
-  EOF  
+  EOF
+  """
 }
 
 function getToken {
